@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
-import { content } from '../../Constants/index'
+import content from '../../Constants/content.json'
 
 const Navbar = () => {
-  const [activeSection, setActiveSection] = useState()
-  const [scrolled, setScrolled] = useState(false)
+  console.log(content)
+  const [activeSection, setActiveSection] = useState('Home') // State to manage active section based on scroll position
+  const [scrolled, setScrolled] = useState(false) // State to track whether page has been scrolled
 
+  // Function to scroll to a specific section on the page
   const scrollToSection = sectionId => {
     const element = document.querySelector(`#${sectionId}`)
     if (element) {
@@ -14,6 +16,8 @@ const Navbar = () => {
       window.scrollTo({ top: scrollToY, behavior: 'smooth' })
     }
   }
+
+  // Function to determine which section is active based on scroll position
   const determineActiveSection = () => {
     for (let i = content.navLinks.length - 1; i >= 0; i--) {
       const section = document.getElementById(content.navLinks[i])
@@ -26,6 +30,8 @@ const Navbar = () => {
       }
     }
   }
+
+  // Effect hook to handle scroll event and determine active section
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 300) {
@@ -40,11 +46,36 @@ const Navbar = () => {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
+
   return (
-    <nav className="bg-primary desktop:w-[120rem] pt-3 w-full px-[2%]   fixed border-b-8 border-tertiary">
-      <div className="bg-white w-32 h-[4rem] mb-3 self-start"></div>
+    <nav className="bg-primary desktop:w-[120rem] pt-3 w-full px-[8%] z-50 fixed border-b-4 border-tertiary">
+      <div className="mb-4 flex items-center justify-between">
+        <img
+          className="rounded w-48 h-16 object-cover object-center"
+          src={content.logo.url}
+          alt={content.logo.alt}
+        />
+        <div className="flex gap-2 text-base text-white">
+          <a className="flex items-center justify-center gap-2" href="">
+            <img
+              className="w-5"
+              src="../../../public/images/whatsapp.png"
+              alt=""
+            />
+            <p>{content.contact.whatsapp}</p>
+          </a>
+          <a className="flex items-center justify-center gap-1" href="">
+            <img
+              className="w-6"
+              src="../../../public/images/instagram.png"
+              alt=""
+            />
+            <p>{content.contact.instagram}</p>
+          </a>
+        </div>
+      </div>
       <div>
-        <ul className="flex items-center gap-[0.3%]">
+        <ul className="flex text-xl items-center gap-[0.3%]">
           {content.navLinks.map(link => (
             <li
               key={link}
@@ -59,10 +90,6 @@ const Navbar = () => {
               <p>{link}</p>
             </li>
           ))}
-          <div className="text-white font-bold flex flex-col items-center justify-center px-1 ">
-            <p>WhatsApp</p>
-            <p>Instagram</p>
-          </div>
         </ul>
       </div>
     </nav>

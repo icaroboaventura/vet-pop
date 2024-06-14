@@ -9,7 +9,7 @@ export default {
         tertiary: '#D12121',
         quaternary: '#707070',
         quinary: '#E6E6E6',
-        senary: '#',
+        senary: '#929292',
       },
       fontFamily: {
         'lilita-one': ['lilita-one', 'Segoe UI'],
@@ -17,6 +17,8 @@ export default {
       },
       screens: {
         desktop: '1920px',
+        tablet: '1000px',
+        phone: '800px',
       },
     },
   },

@@ -1,8 +1,13 @@
-import { content } from '../../Constants/index'
+import content from '../../Constants/content.json'
+import Slider from '../sections-parts/Slider'
+import Stats from '../sections-parts/Stats'
+import Story from '../sections-parts/Story'
 const Home = () => {
   return (
-    <section id={content.navLinks[0]} className="min-h-svh bg-red-200">
-      Home
+    <section id={content.navLinks[0]}>
+      <Slider />
+      <Stats />
+      <Story />
     </section>
   )
 }

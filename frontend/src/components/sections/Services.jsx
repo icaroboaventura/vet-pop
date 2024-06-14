@@ -1,9 +1,9 @@
-import { content } from '../../Constants/index'
+import content from '../../Constants/content.json'
 const Services = () => {
   return (
-    <section id={content.navLinks[1]} className="min-h-svh bg-blue-200">
-      Services
-    </section>
+    <section
+      id={content.navLinks[1]}
+      className="min-h-svh bg-slate-400"></section>
   )
 }
 
