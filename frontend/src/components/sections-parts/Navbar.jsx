@@ -56,22 +56,14 @@ const Navbar = () => {
           alt={content.logo.alt}
         />
         <div className="gap-2 text-xs text-white hidden sm:flex">
-          <a className="flex items-center justify-center gap-2" href="">
-            <img
-              className="w-[1rem]"
-              src="../../../public/images/whatsapp.png"
-              alt=""
-            />
-            <p>{content.contact.whatsapp}</p>
-          </a>
-          <a className="flex items-center justify-center gap-1" href="">
-            <img
-              className="w-[1.1rem]"
-              src="../../../public/images/instagram.png"
-              alt=""
-            />
-            <p>{content.contact.instagram}</p>
-          </a>
+          {content.contactNavbar.map(link => (
+            <div
+              key={link.media}
+              className="flex items-center justify-center gap-1">
+              <img src={link.icon} alt={link.media} className="w-4" />
+              <p className="text-[0.8rem]">{link.content}</p>
+            </div>
+          ))}
         </div>
         <div className="sm:hidden flex flex-col gap-[0.3rem]">
           <div className="w-[1.4rem] h-[0.2rem] bg-white rounded"></div>

@@ -1,8 +1,18 @@
 {
-  "contact": {
-    "instagram": "@hvpopveterinaria",
-    "whatsapp": "(71) 99656-9030"
-  },
+  "contactNavbar": [
+    {
+      "url": "",
+      "icon": "/images/social1.svg",
+      "content": "(71) 99656-9030",
+      "media": "whatsapp"
+    },
+    {
+      "url": "",
+      "icon": "/images/social2.svg",
+      "content": "@hvpopveterinaria",
+      "media": "instagram"
+    }
+  ],
   "logo": {
     "url": "https://via.placeholder.com/800x200?text=Logo",
     "alt": "Logo"
