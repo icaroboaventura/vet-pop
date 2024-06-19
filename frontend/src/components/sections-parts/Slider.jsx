@@ -1,92 +1,85 @@
 import React, { useState, useEffect, useRef } from 'react'
 import content from '../../Constants/content.json'
+import KeyboardArrowLeftRoundedIcon from '@mui/icons-material/KeyboardArrowLeftRounded'
+import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded'
+import { colors } from '../../utils/functions'
 
 const Slider = () => {
-  const [currentIndex, setCurrentIndex] = useState(0) // State to manage current slide index
-  const intervalRef = useRef(null) // Ref to hold interval ID for slideshow
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const intervalRef = useRef(null)
 
-  // Function to start the slideshow interval
+  useEffect(() => {
+    startInterval()
+    return () => clearInterval(intervalRef.current)
+  }, [])
+
   const startInterval = () => {
+    clearInterval(intervalRef.current)
     intervalRef.current = setInterval(() => {
       setCurrentIndex(
         prevIndex => (prevIndex + 1) % content.slideImgs.length,
       )
-    }, 3000) // Change slide every 3 seconds
+    }, 3000)
   }
 
-  // Effect hook to start the interval on component mount
-  useEffect(() => {
-    startInterval()
-    // Cleanup function to clear interval on component unmount
-    return () => clearInterval(intervalRef.current)
-  }, [])
-
-  // Function to go to the next slide
-  const goToNextSlide = () => {
-    const newIndex = (currentIndex + 1) % content.slideImgs.length
-    setCurrentIndex(newIndex)
-    resetInterval() // Reset interval after manual navigation
-  }
-
-  // Function to go to the previous slide
-  const goToPreviousSlide = () => {
-    const newIndex =
-      currentIndex === 0 ? content.slideImgs.length - 1 : currentIndex - 1
-    setCurrentIndex(newIndex)
-    resetInterval() // Reset interval after manual navigation
-  }
-
-  // Function to reset the slideshow interval
-  const resetInterval = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current)
-    }
+  const goToPrevious = () => {
+    setCurrentIndex(prevIndex =>
+      prevIndex === 0 ? content.slideImgs.length - 1 : prevIndex - 1,
+    )
     startInterval()
   }
 
-  // Function to handle button click to navigate directly to a slide
-  const handleButtonClick = index => {
+  const goToNext = () => {
+    setCurrentIndex(
+      prevIndex => (prevIndex + 1) % content.slideImgs.length,
+    )
+    startInterval()
+  }
+
+  const goToIndex = index => {
     setCurrentIndex(index)
-    resetInterval() // Reset interval after manual navigation
+    startInterval()
   }
 
   return (
-    <div className="relative w-full min-h-svh overflow-hidden borber">
-      {content.slideImgs.map((slide, index) => (
+    <div className="relative w-full h-[15rem] sm:h-[20rem] md:h-[25rem] lg:h-[30rem] xl:h-[35rem] 2xl:h-[40rem]  overflow-hidden">
+      {content.slideImgs.map((image, index) => (
         <div
-          key={slide.alt}
-          className={`absolute w-full transition-opacity duration-1000 ease-in-out ${
+          key={index}
+          className={`absolute h-full bg-cover w-full bg-center bg-no-repeat transition-opacity duration-1000 ${
             index === currentIndex ? 'opacity-100' : 'opacity-0'
-          }`}>
-          <img
-            src={slide.url}
-            alt={slide.alt}
-            className="w-full pt-20 h-svh object-cover object-center"
-          />
-        </div>
+          }`}
+          style={{ backgroundImage: `url(${image})` }}></div>
       ))}
-      {/* Previous slide button */}
-      <button
-        onClick={goToPreviousSlide}
-        className="absolute bottom-0 left-0 w-1/2 h-full"></button>
-      {/* Next slide button */}
-      <button
-        onClick={goToNextSlide}
-        className="absolute bottom-0 right-0 w-1/2 h-full"></button>
-      {/* Slide navigation buttons */}
-      <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex gap-2">
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {content.slideImgs.map((_, index) => (
-          <button
+          <span
             key={index}
-            onClick={() => handleButtonClick(index)}
-            className={`w-4 h-4 rounded-full ${
+            className={`w-3 h-3 shadow-lg rounded-full cursor-pointer transition-opacity duration-300 ${
               index === currentIndex ? 'bg-tertiary' : 'bg-white'
-            }`}></button>
+            }`}
+            onClick={() => goToIndex(index)}></span>
         ))}
       </div>
-      <div
-        className="mx-[8%] shadow-lg  absolute bottom-0 rounded-t-3xl bg-secondary w-[84%]
-       h-9"></div>
+      <button
+        className="absolute left-0 top-1/2 transform -translate-y-1/2"
+        onClick={goToPrevious}>
+        <KeyboardArrowLeftRoundedIcon
+          sx={{
+            color: 'white',
+            width: '50px',
+            height: '50px',
+          }}
+        />
+      </button>
+      <button
+        className="absolute right-0 top-1/2 transform -translate-y-1/2"
+        onClick={goToNext}>
+        <KeyboardArrowRightRoundedIcon
+          sx={{ color: 'white', width: '50px', height: '50px' }}
+        />
+      </button>
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-secondary w-[84%] h-3 rounded-t-lg "></div>
     </div>
   )
 }

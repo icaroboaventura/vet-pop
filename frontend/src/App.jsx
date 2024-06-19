@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <div className="relative max-w-[120rem] mx-auto text-xl font-segoe-ui">
+        <div className="max-w-[120rem] mx-auto font-segoe-ui">
           <Navbar />
           <Home />
           <Services />

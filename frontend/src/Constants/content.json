@@ -15,20 +15,7 @@
     "Depoimentos",
     "Contatos"
   ],
-  "slideImgs": [
-    {
-      "url": "https://via.placeholder.com/1920x1080?text=Slide+One",
-      "alt": "Slide 1"
-    },
-    {
-      "url": "https://via.placeholder.com/1920x1080?text=Slide+Two",
-      "alt": "Slide 2"
-    },
-    {
-      "url": "https://via.placeholder.com/1920x1080?text=Slide+Three",
-      "alt": "Slide 3"
-    }
-  ],
+  "slideImgs": ["/images/cat.jpg", "/images/dog.jpg", "/images/dog2.jpg"],
   "stats": [
     {
       "stat": "atendimentos",
@@ -45,6 +32,10 @@
     {
       "stat": "castrações",
       "count": "+ 700"
+    },
+    {
+      "stat": "pacientes",
+      "count": "+ 600"
     },
     {
       "stat": "reabilitações",
@@ -83,19 +74,19 @@
   ],
   "owners": [
     {
-      "url": "https://via.placeholder.com/600x600?text=Owner",
+      "url": "/images/male.png",
       "alt": "Owner"
     },
     {
-      "url": "https://via.placeholder.com/600x600?text=Owner",
+      "url": "/images/female.png",
       "alt": "Owner"
     },
     {
-      "url": "https://via.placeholder.com/600x600?text=Owner",
+      "url": "/images/male.png",
       "alt": "Owner"
     },
     {
-      "url": "https://via.placeholder.com/600x600?text=Owner",
+      "url": "/images/female.png",
       "alt": "Owner"
     }
   ]

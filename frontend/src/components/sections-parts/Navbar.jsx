@@ -48,17 +48,17 @@ const Navbar = () => {
   }, [])
 
   return (
-    <nav className="bg-primary desktop:w-[120rem] pt-3 w-full px-[8%] z-50 fixed border-b-4 border-tertiary">
+    <nav className="bg-primary desktop:w-[120rem] pt-3 w-full px-[8%] z-50 fixed border-b-4 h-[4rem] sm:h-[7rem] flex flex-col justify-between border-tertiary">
       <div className="mb-4 flex items-center justify-between">
         <img
-          className="rounded w-48 h-16 object-cover object-center"
+          className="rounded w-36 h-13 object-cover object-center"
           src={content.logo.url}
           alt={content.logo.alt}
         />
-        <div className="flex gap-2 text-base text-white">
+        <div className="gap-2 text-xs text-white hidden sm:flex">
           <a className="flex items-center justify-center gap-2" href="">
             <img
-              className="w-5"
+              className="w-[1rem]"
               src="../../../public/images/whatsapp.png"
               alt=""
             />
@@ -66,32 +66,35 @@ const Navbar = () => {
           </a>
           <a className="flex items-center justify-center gap-1" href="">
             <img
-              className="w-6"
+              className="w-[1.1rem]"
               src="../../../public/images/instagram.png"
               alt=""
             />
             <p>{content.contact.instagram}</p>
           </a>
         </div>
+        <div className="sm:hidden flex flex-col gap-[0.3rem]">
+          <div className="w-[1.4rem] h-[0.2rem] bg-white rounded"></div>
+          <div className="w-[1.4rem] h-[0.2rem] bg-white rounded"></div>
+          <div className="w-[1.4rem] h-[0.2rem] bg-white rounded"></div>
+        </div>
       </div>
-      <div>
-        <ul className="flex text-xl items-center gap-[0.3%]">
-          {content.navLinks.map(link => (
-            <li
-              key={link}
-              onClick={() => {
-                scrollToSection(link)
-              }}
-              className={`${
-                activeSection === link ?
-                  'bg-secondary text-white '
-                : 'bg-white text-quaternary hover:text-secondary'
-              } w-full p-1 font-bold flex items-center justify-center h-12 cursor-pointer rounded-t`}>
-              <p>{link}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ul className="hidden sm:flex text-[0.875rem] items-center gap-[0.3%]">
+        {content.navLinks.map(link => (
+          <li
+            key={link}
+            onClick={() => {
+              scrollToSection(link)
+            }}
+            className={`${
+              activeSection === link ?
+                'bg-secondary text-white '
+              : 'bg-white text-quaternary hover:text-secondary'
+            } w-full p-1 flex items-center justify-center h-10 cursor-pointer rounded-t`}>
+            <p>{link}</p>
+          </li>
+        ))}
+      </ul>
     </nav>
   )
 }
