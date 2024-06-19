@@ -107,30 +107,27 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
-      {/* Full-width menu overlay */}
       <div
-        className={`absolute top-0 left-0 w-full h-[22rem] mt-[3.7rem] border-tertiary border-b-4 bg-primary text-white sm:hidden flex flex-col items-center  justify-center transform transition-transform duration-300 ${
+        className={`absolute top-0 left-0 w-full mt-[3.7rem] pt-5 border-tertiary border-b-4 bg-primary text-white sm:hidden flex flex-col items-center ease-in-out justify-center transform transition-transform duration-300 ${
           menuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}>
-        <div>
-          <ul className="text-center text-xl flex flex-col gap-2 items-center justify-between">
-            {content.navLinks.map(link => (
-              <li
-                key={link}
-                onClick={() => {
-                  scrollToSection(link)
-                  setMenuOpen(false) // Close the menu on link click
-                }}
-                className={`${
-                  activeSection === link ?
-                    ' text-tertiary border-tertiary'
-                  : ' text-white border-white hover:text-secondary hover:border-secondary'
-                }  flex items-center justify-center h-10 cursor-pointer border-b`}>
-                {link}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul className="text-center text-lg flex flex-col gap-2 w-full">
+          {content.navLinks.map(link => (
+            <li
+              key={link}
+              onClick={() => {
+                scrollToSection(link)
+                setMenuOpen(false)
+              }}
+              className={`${
+                activeSection === link ?
+                  'text-tertiary border-tertiary'
+                : 'text-white border-white hover:text-secondary hover:border-secondary'
+              } flex w-full items-center border-b justify-center h-10 cursor-pointer`}>
+              {link}
+            </li>
+          ))}
+        </ul>
       </div>
     </nav>
   )
