@@ -109,11 +109,11 @@ const Navbar = () => {
       </ul>
       {/* Full-width menu overlay */}
       <div
-        className={`absolute top-0 left-0 w-full h-[25rem] mt-[3.7rem] border-tertiary border-b-4 bg-primary text-white sm:hidden flex flex-col items-center  justify-center transform transition-transform duration-300 ${
+        className={`absolute top-0 left-0 w-full h-[22rem] mt-[3.7rem] border-tertiary border-b-4 bg-primary text-white sm:hidden flex flex-col items-center  justify-center transform transition-transform duration-300 ${
           menuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}>
         <div>
-          <ul className="text-center text-2xl flex flex-col items-center justify-between">
+          <ul className="text-center text-xl flex flex-col gap-2 items-center justify-between">
             {content.navLinks.map(link => (
               <li
                 key={link}
@@ -122,10 +122,10 @@ const Navbar = () => {
                   setMenuOpen(false) // Close the menu on link click
                 }}
                 className={`${
-                  activeSection === link ? ' text-tertiary ' : (
-                    ' text-white hover:text-secondary'
-                  )
-                } w-full flex items-center justify-center h-10 cursor-pointer `}>
+                  activeSection === link ?
+                    ' text-tertiary border-tertiary'
+                  : ' text-white border-white hover:text-secondary hover:border-secondary'
+                }  flex items-center justify-center h-10 cursor-pointer border-b`}>
                 {link}
               </li>
             ))}
