@@ -122,7 +122,7 @@ const Navbar = () => {
               className={`${
                 activeSection === link ?
                   'text-tertiary border-tertiary'
-                : 'text-white border-white hover:text-secondary hover:border-secondary'
+                : 'text-white border-white hover:text-secondary '
               } flex w-full items-center border-b justify-center h-10 cursor-pointer`}>
               {link}
             </li>
