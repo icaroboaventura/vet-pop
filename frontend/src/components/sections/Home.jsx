@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <section
       id={content.navLinks[0]}
-      className="min-h-svh pt-[4rem] sm:pt-[7rem]">
+      className="min-h-svh pt-[65px] sm:pt-[110px]">
       <Slider />
       <Stats />
       <Story />

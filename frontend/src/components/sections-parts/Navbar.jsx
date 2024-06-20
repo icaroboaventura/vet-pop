@@ -63,10 +63,10 @@ const Navbar = () => {
   }, [])
 
   return (
-    <nav className="bg-primary desktop:w-[120rem] pt-3 w-full px-[8%] z-50 fixed border-b-4 h-[4rem] sm:h-[7rem] flex flex-col justify-between border-tertiary">
+    <nav className="bg-primary desktop:w-[120rem] pt-3 w-full px-[8%] z-50 fixed border-b-4 h-[65px] sm:h-[110px] flex flex-col justify-between border-tertiary">
       <div className="mb-4 flex items-center justify-between">
         <img
-          className="rounded w-36 h-13 object-cover object-center"
+          className="rounded w-[120px] object-cover object-center"
           src={content.logo.url}
           alt={content.logo.alt}
         />
@@ -122,8 +122,8 @@ const Navbar = () => {
               className={`${
                 activeSection === link ?
                   'text-tertiary border-tertiary'
-                : 'text-white border-white hover:text-secondary '
-              } flex w-full items-center border-b justify-center h-10 cursor-pointer`}>
+                : 'text-white border-white border-opacity-10'
+              } flex w-full items-center pb-2 border-b justify-center h-10 cursor-pointer`}>
               {link}
             </li>
           ))}
