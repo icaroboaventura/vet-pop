@@ -16,14 +16,11 @@
   scroll-behavior: smooth;
 }
 
-@layer utilities {
-  /* In your global CSS file */
-  .no-scrollbar {
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
-    scrollbar-width: none; /* Firefox */
-  }
+.hide-scroll-bar {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
 
-  .no-scrollbar::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
-  }
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }

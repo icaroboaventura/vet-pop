@@ -17,7 +17,7 @@ export default {
       },
       fontSize: {
         'clamp-title': 'clamp(1.25rem, 6vw, 2.5rem)',
-        'clamp-text': 'clamp(.875rem, 3vw, 1.25rem)',
+        'clamp-text': 'clamp(0.8rem, 2vw, 1rem)',
       },
       screens: {
         desktop: '1920px',

@@ -63,7 +63,7 @@ const Navbar = () => {
   }, [])
 
   return (
-    <nav className="bg-primary desktop:w-[120rem] pt-3 w-full px-[8%] z-50 fixed border-b-4 h-[65px] sm:h-[110px] flex flex-col justify-between border-tertiary">
+    <nav className="bg-primary desktop:w-[120rem] pt-3 w-full px-[8%] z-50 fixed border-b-4 h-[65px] sm:h-[110px] flex flex-col justify-between border-tertiary shadow-lg">
       <div className="mb-4 flex items-center justify-between">
         <img
           className="rounded w-[120px] object-cover object-center"
@@ -81,7 +81,7 @@ const Navbar = () => {
           ))}
         </div>
         <div
-          className="sm:hidden flex flex-col gap-[0.3rem] cursor-pointer"
+          className="sm:hidden flex flex-col gap-[0.3rem] cursor-pointer transform active:scale-75 transition-transform"
           onClick={() => setMenuOpen(!menuOpen)}>
           <div
             className={`w-[1.4rem] h-[0.2rem] bg-white rounded transition-transform duration-300 ${menuOpen ? 'transform rotate-45 translate-y-[0.5rem]' : ''}`}></div>
@@ -102,13 +102,15 @@ const Navbar = () => {
               activeSection === link ?
                 'bg-secondary text-white '
               : 'bg-white text-quaternary hover:text-secondary'
-            } w-full p-1 flex items-center justify-center h-10 cursor-pointer rounded-t`}>
-            <p>{link}</p>
+            } w-full p-1 flex items-center justify-center h-10 cursor-pointer rounded-t-lg`}>
+            <p className="transform active:scale-90 transition-transform">
+              {link}
+            </p>
           </li>
         ))}
       </ul>
       <div
-        className={`absolute top-0 left-0 w-full mt-[3.7rem] pt-5 border-tertiary border-b-4 bg-primary text-white sm:hidden flex flex-col items-center ease-in-out justify-center transform transition-transform duration-300 ${
+        className={`absolute top-0 left-0 w-full mt-[3.7rem] pt-5 border-tertiary border-b-4 shadow-lg bg-primary text-white sm:hidden flex flex-col items-center ease-in-out justify-center transform transition-transform duration-300 ${
           menuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}>
         <ul className="text-center text-lg flex flex-col gap-2 w-full">
@@ -123,8 +125,10 @@ const Navbar = () => {
                 activeSection === link ?
                   'text-tertiary border-tertiary'
                 : 'text-white border-white border-opacity-10'
-              } flex w-full items-center pb-2 border-b justify-center h-10 cursor-pointer`}>
-              {link}
+              } flex w-full items-center pb-2 border-b justify-center h-10 cursor-pointer `}>
+              <p className="transform active:scale-95 transition-transform">
+                {link}
+              </p>
             </li>
           ))}
         </ul>
