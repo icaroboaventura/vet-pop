@@ -18,14 +18,14 @@ const Owners = () => {
         {content.owners.map((owner, index) => (
           <div
             key={index}
-            className="relative w-full max-w-[130px] rounded-full shadow-lg overflow-hidden cursor-pointer"
+            className="relative w-full max-w-[130px] rounded-full hover:scale-105 hover:shadow-xl transform transition-transform duration-300 ease-in-out shadow-lg overflow-hidden cursor-pointer"
             onClick={() => handleImageClick(owner)}>
             <img
               src={owner.url}
               alt={owner.alt}
               className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black opacity-0 hover:opacity-75 transition-opacity duration-300 ease-in-out flex items-center justify-center">
+            <div className="absolute inset-0 bg-gradient-to-t from-primary opacity-0 hover:opacity-75 transition-opacity duration-300 ease-in-out flex items-center justify-center">
               <span className="flex justify-center items-center whitespace-nowrap font-lilita-one text-white text-clamp-text ">
                 Ver mais
               </span>
